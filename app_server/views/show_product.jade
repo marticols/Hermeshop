@@ -1,0 +1,43 @@
+extend shopLayout
+
+block content
+  .row
+    .col-md-4
+      .carousel.slide#carousel_1(data-ride='carousel')
+        ol.carousel-indicators
+          li.active(data-target='#carousel_1', data-slide-to='0')
+          li(data-target='#carousel_1', data-slide-to='1')
+        .carousel-inner(role="listbox")
+          .item.active
+            div.responsiveimg(style="background-image: url('#{product.banner}')")
+          each img in product.img
+            .item 
+              div.responsiveimg(style="background-image: url('#{img}')")
+        a.left.carousel-control(href='#carousel_1', role='button', data-slide='prev')
+          span.icon-prev(aria-hidden='true')
+          span.sr-only Previous
+        a.right.carousel-control(href='#carousel_1', role='button', data-slide='next')
+          span.icon-next(aria-hidden='true')
+          span.sr-only Next
+    .col-md-8
+      h3.uppercase.pull-left 
+        a(href='#')= product.title
+        
+      - var price = String(product.price).replace('.', ',');
+      .pull-right    
+        h3.text-right= price + ' €'
+      .clearfix
+      p= product.description
+      form(method='post', action="https://www.sandbox.paypal.com/cgi-bin/webscr")
+        input(type="hidden", name="cmd", value="_xclick")
+        input(type="hidden", name="business", value="kalilinux.tv@gmail.com")
+        input(type="hidden", name="item_name", value="#{product.title}")
+        input(type="hidden", name="amount", value="#{product.price}")
+        input(type="hidden", name="currency_code", value="EUR")
+        .form-group
+          label.control-label(for='color_select') Quantity
+          input.form-control(name='quantity', placeholder="1" style='width: 30%;')
+        .form-group
+          button.btn.btn-primary(type='submit' name="submit")
+            | Buy now
+            span.glphicon.glyphicon-card

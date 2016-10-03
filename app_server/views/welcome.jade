@@ -1,0 +1,25 @@
+extends shopLayout
+
+block content
+  .row
+    .jumbotron
+      h1 Welcome to example
+      p This is an example shop.
+      a(href='/shop')
+        button.btn.btn-primary.btn-lg Go to the shop
+  .page-header
+    h2
+      span.glyphicon.glyphicon-tag(aria-hidden='true', style='margin-right: 7px;')
+      | New Products  
+  .col-md-12
+    .row
+      each product in products
+        .thumbnail.col-md-3(style='padding: 0 20px; border: none;')
+          div.responsive(style="background-image: url('#{product.banner}');")
+          .caption.clearfix
+            - var price = String(product.price).replace('.',',');
+            h4.pull-right= price + ' €'
+            h4
+              a(href="/shop/#{product.categoryurl}/#{product.url}")= product.title
+            - var description = String(product.description).slice(0,75);
+            p= description

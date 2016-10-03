@@ -1,0 +1,12 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Are you sure you want to remove "{{ vm.productData.title }}"?</h4>
+  </div>
+  <div class="modal-footer">
+    <br>
+    <form name="deleteProduct" role="form" class="form-horizontal" ng-submit="vm.onSubmit()">
+      <button ng-click="vm.modal.cancel()" type="button" class="btn btn-default">Cancel</button>
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div style="margin-top: 20px">
+  <div class="col-xs-12" ng-show="navvm.isLoggedIn">
+    <h4 style="display: inline"><span class="glyphicon glyphicon-user"></span>  {{ navvm.currentUser.name }}</h4>
+    <a ng-click="navvm.logout()" class="btn btn-danger pull-right">Log Out</a>
+  </div>
+  <div class="row" ng-hide="navvm.isLoggedIn">
+    <div class="jumbotron col-md-8 col-md-offset-2" style="background-color: #F8F8F8">
+      <h1>Welcome to Hermeshop</h1>
+      <p class="lead">Manage your shop now.</p>
+      <p>
+        <a class="btn btn-lg btn-primary" href="/admin/#register">Register</a>
+        <a class="btn btn-lg btn-primary" href="/admin/#login/?page={{ navvm.currentPath }}">Login</a>
+      </p>
+    </div>
+  </div>
+</div>

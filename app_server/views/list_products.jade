@@ -1,0 +1,19 @@
+extend shopLayout
+
+block content 
+    .col-md-4(ng-controller='listCategories')
+      h1.lead Categories
+      div.list-group
+        a.list-group-item(href='/shop/') All products
+        a.list-group-item(ng-repeat='category in data.categories', href='/shop/{{ category | formatCategory }}/') {{ category }}
+    .col-md-8(ng-controller='listProducts')
+      label.control-label(for='filter') Search
+      input.form-control(type='text', name='filter', ng-model='textFilter' style='width: 20%; margin-bottom: 20px;')
+      .row
+        .thumbnail.col-md-4.col-sm-6(style='padding: 0 20px; border: none;', ng-repeat='product in data.products | filter : textFilter')
+          div(imgbanner banner="product.banner")
+          .caption.clearfix
+            h4.pull-right {{ product.price | formatPrice }}
+            h4
+              a(href="/shop/{{product.categoryurl}}/{{product.url}}") {{ product.title}}
+            p {{ product.description.slice(0,75) }}

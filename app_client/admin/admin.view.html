@@ -1,0 +1,42 @@
+<div class="row">
+  <navadmin></navadmin>
+  <div class="col-md-12" ng-show="vm.isLoggedIn">
+    <h1 class="page-header">List Products</h1>
+    <div class="input-group pull-left" style="width: 20%;">
+      <span class="input-group-addon"><span class=" glyphicon glyphicon-search"></span></span>
+      <input type='text' name='filter' ng-model='textFilter' style='width: 100%;' placeholder="search" class="form-control")></input>
+    </div>
+    <button class="btn btn-primary pull-right" ng-click="vm.popupCreate()">Create Product</button>
+    <table class="table table-hover" style="margin-top: 20px">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Edit</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='product in vm.data.products | filter: textFilter' ng-if='product.title'>
+          <td>{{ product.title }}</td>
+          <td>{{ product.price + '€' | formatPrice }}</td>
+          <td>{{ product.category }}</td>
+          <td>
+            <a class="btn btn-success" href="{{ '../shop/' + product.categoryurl + '/' + product.url }}">View</a>
+            <button class="btn btn-primary" ng-click="vm.popupUpdate(product)" >Modify</button>
+            <button class="btn btn-danger" ng-click="vm.popupDelete(product.url, product.categoryurl, product.title, product)">Delete</button>
+          </td>
+
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <button class="btn btn-primary" ng-click="vm.popupCreate()">Create Product</button>
+          </td>
+      </tbody>
+    </table>
+  </div>
+</div>

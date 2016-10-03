@@ -1,0 +1,54 @@
+<div class="modal-content">
+  <form name="addProduct" role="form" class="form-horizontal" ng-submit="vm.onSubmit()">
+    <div class="modal-header">
+      <h4 class="modal-title">Modify "{{vm.productData.title}}"</h4>
+    </div>
+    <div class="modal-body">
+      <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{ vm.formError }}</div>
+      <div class="form-group">
+        <label for="title" class="col-xs-2 col-sm-2 control-label">Name</label>
+        <div class="col-xs-10">
+          <input name="title" ng-model="vm.formData.title" ng-init="vm.formData.title = vm.productData.title"  class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category" class="col-xs-2 control-label">Category</label>
+        <div class="col-xs-10">
+          <input name="category" ng-model="vm.formData.category" ng-init="vm.formData.category = vm.productData.category" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description" class="col-xs-2 control-label">Description</label>
+        <div class="col-xs-10">
+          <textarea name="description" rows="5"  ng-model="vm.formData.description" ng-init="vm.formData.description = vm.productData.description" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Banner" class="col-xs-2 control-label">Banner</label>
+        <div class="col-xs-10">
+          <input name="banner" ng-model="vm.formData.banner" ng-init="vm.formData.banner=vm.productData.banner" class="form-control"/>
+          <small class="form-text text-muted">Insert the main image</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="images" class="col-xs-2 control-label">Images</label>
+        <div class="col-xs-10">
+          <input name="images" ng-model="vm.formData.img" ng-init="vm.formData.img=vm.productData.img" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price" class="col-xs-2 control-label">Price</label>
+        <div class="col-xs-3">
+          <div class="input-group">
+            <input name="price" string-to-number step="any" ng-model="vm.formData.price" ng-init="vm.formData.price = vm.productData.price" class="form-control" type="number"/>
+            <div class="input-group-addon">€</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button ng-click="vm.modal.cancel()" type="button" class="btn btn-default">Cancel</button>
+      <button type="submit" class="btn btn-primary">Update product</button>
+    </div>
+  </form>
+</div>

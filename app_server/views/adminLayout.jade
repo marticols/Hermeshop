@@ -1,0 +1,21 @@
+doctype html
+html(ng-app='adminApp')
+  head
+    title Admin
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(charset="utf-8")
+  body
+    div.navbar-admin
+      div.logo-container
+        img(src='/images/logo.svg' alt='hermeshop')
+    .container(ng-view)
+    
+    script(src='/javascripts/jquery-3.1.0.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script(src='/angular/angular.min.js')
+    script(src='/angular/angular-route.min.js')
+    script(src='/angular/hermes.min.js')
+    script(src='/angular/ui-bootstrap.min.js')
+    script(src='/angular/ui-bootstrap-tpls.min.js')
